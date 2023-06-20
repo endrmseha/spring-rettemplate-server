@@ -19,7 +19,7 @@ public class ItemService {
             new Item("AirPods", 350_000)
     );
 
-    public Item getCallObject(String query) { //
+    public Item getCallObject(String query) {
         for (Item item : itemList) {
             if(item.getTitle().equals(query)) {
                 return item;
@@ -29,7 +29,11 @@ public class ItemService {
     }
 
     public ItemResponseDto getCallList() {
-        return null;
+        ItemResponseDto responseDto = new ItemResponseDto();
+        for (Item item : itemList) {
+            responseDto.setItems(item);
+        }
+        return responseDto;
     }
 
     public Item postCall(String query, UserRequestDto requestDto) {
